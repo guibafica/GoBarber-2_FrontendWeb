@@ -11,7 +11,7 @@ export const Container = styled.div`
   align-items: center;
 
   & + div {
-    margin-top: 16px;
+    margin-top: 8px;
   }
 
   input {
