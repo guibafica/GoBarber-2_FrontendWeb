@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components';
+import { animated } from 'react-spring';
 
 interface ContainerProps {
   type?: 'success' | 'error' | 'info';
@@ -7,26 +8,26 @@ interface ContainerProps {
 
 const toastTypeVariations = {
   info: css`
-    background: #ebf8ff;
+    background: #ebf8ff99;
     color: #3172b7;
   `,
   success: css`
-    background: #e6fffa;
+    background: #e6fffa99;
     color: #2e656e;
   `,
   error: css`
-    background: #fddede;
+    background: #fddede99;
     color: #c53030;
   `,
 };
 
-export const Container = styled.div<ContainerProps>`
+export const Container = styled(animated.div)<ContainerProps>`
   width: 360px;
 
   position: relative;
   padding: 16px 30px 16px 16px;
   border-radius: 10px;
-  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
 
   display: flex;
 
@@ -34,7 +35,7 @@ export const Container = styled.div<ContainerProps>`
     margin-top: 8px;
   }
 
-  ${(props) => toastTypeVariations[props.type || 'info']}
+  ${props => toastTypeVariations[props.type || 'info']}
 
   > svg {
     margin: 4px 12px 0 0;
@@ -61,9 +62,8 @@ export const Container = styled.div<ContainerProps>`
     color: inherit;
   }
 
-  ${(props) =>
-    !props.hasDescription &&
-    css`
+  ${props => !props.hasDescription
+    && css`
       align-items: center;
 
       svg {
