@@ -21,12 +21,31 @@ import logoImg from '../../assets/logo.svg';
 
 const Dashboard: React.FC = () => {
   const [selectedDate, setSelectedDate] = useState(new Date());
+  const [currentMonth, setCurrentMonth] = useState(new Date());
 
   const handleDateChange = useCallback((day: Date, modifiers: DayModifiers) => {
     if (modifiers.available) {
       setSelectedDate(day);
     }
   }, []);
+
+  const handleMonthChange = useCallback((month: Date) => {
+    setCurrentMonth(month);
+    console.log(month);
+  }, []);
+
+  // Executar sempre que mudar o mês
+  /*
+    useEffect(() => {
+    api.get('', {
+      params: {
+
+      }
+    }).then(response => {
+      set...
+    })
+  }, [currentMonth]);
+  */
 
   return (
     <Container>
@@ -147,6 +166,7 @@ const Dashboard: React.FC = () => {
             modifiers={{
               available: { daysOfWeek: [1, 2, 3, 4, 5] },
             }}
+            onMonthChange={handleMonthChange}
             selectedDays={selectedDate}
             onDayClick={handleDateChange}
             months={[
