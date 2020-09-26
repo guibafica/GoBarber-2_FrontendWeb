@@ -37,16 +37,18 @@ const Dashboard: React.FC = () => {
   }, []);
 
   const todayDateAsText = useMemo(
-    () => format(new Date(), "'Dia' dd 'de' MMMM", {
-      locale: ptBR,
-    }),
+    () =>
+      format(new Date(), "'Dia' dd 'de' MMMM", {
+        locale: ptBR,
+      }),
     [],
   );
 
   const weekDateAsText = useMemo(
-    () => format(new Date(), 'cccc', {
-      locale: ptBR,
-    }),
+    () =>
+      format(new Date(), 'cccc', {
+        locale: ptBR,
+      }),
     [],
   );
 
@@ -77,7 +79,9 @@ const Dashboard: React.FC = () => {
 
             <div>
               <span>Bem-vindo,</span>
-              <strong>Guilherme Bafica</strong>
+              <Link to="/profile">
+                <strong>Guilherme Bafica</strong>
+              </Link>
             </div>
           </Profile>
 
