@@ -1,9 +1,11 @@
 import React, { useCallback, useRef } from 'react';
 import { FiMail, FiUser, FiLock } from 'react-icons/fi';
+import { Link } from 'react-router-dom';
 import { FormHandles } from '@unform/core';
 import { Form } from '@unform/web';
 import * as Yup from 'yup';
 import { useHistory } from 'react-router-dom';
+import { FiCamera, FiArrowLeft } from 'react-icons/fi';
 
 import api from '../../services/api';
 
@@ -73,13 +75,31 @@ const Profile: React.FC = () => {
 
   return (
     <Container>
+      <header>
+        <div>
+          <Link to="/dashboard">
+            <FiArrowLeft />
+          </Link>
+        </div>
+      </header>
+
       <Content>
-        <Form ref={formRef} onSubmit={handleSubmit}>
+        <Form
+          ref={formRef}
+          initialData={{
+            name: 'Guilherme Bafica',
+            email: 'gb.engcomp@hotmail.com',
+          }}
+          onSubmit={handleSubmit}
+        >
           <AvatarInput>
             <img
               src="https://avatars3.githubusercontent.com/u/57121069?s=460&u=03ff0ab9bfa21400a455b270f39d30712e54a2a4&v=4"
               alt="Perfil"
             />
+            <button type="button">
+              <FiCamera />
+            </button>
           </AvatarInput>
 
           <h1>Meu perfil</h1>
@@ -117,4 +137,3 @@ const Profile: React.FC = () => {
 };
 
 export default Profile;
-// 11:06
