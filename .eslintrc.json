@@ -34,21 +34,29 @@
         "react/jsx-props-no-spreading": "off",
         "react/prop-types": "off",
         "no-unused-expressions": "off",
-        "react/jsx-filename-extension": [1, { "extensions": [".tsx"] }],
+        "import/no-duplicates": "off",
+        "react/jsx-filename-extension": [
+            1,
+            {
+                "extensions": [
+                    ".tsx"
+                ]
+            }
+        ],
         "import/prefer-default-export": "off",
         "import/extensions": [
             "error",
             "ignorePackages",
             {
-              "ts": "never",
-              "tsx": "never"
+                "ts": "never",
+                "tsx": "never"
             }
-          ],
+        ],
         "prettier/prettier": "error"
     },
     "settings": {
         "import/resolver": {
-          "typescript": {}
+            "typescript": {}
         }
     }
 }

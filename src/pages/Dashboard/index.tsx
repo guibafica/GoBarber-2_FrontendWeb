@@ -1,5 +1,7 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useMemo } from 'react';
 import { Link } from 'react-router-dom';
+import { format } from 'date-fns';
+import ptBR from 'date-fns/locale/pt-BR';
 import DayPicker, { DayModifiers } from 'react-day-picker';
 import 'react-day-picker/lib/style.css';
 
@@ -33,6 +35,20 @@ const Dashboard: React.FC = () => {
     setCurrentMonth(month);
     console.log(month);
   }, []);
+
+  const todayDateAsText = useMemo(
+    () => format(new Date(), "'Dia' dd 'de' MMMM", {
+      locale: ptBR,
+    }),
+    [],
+  );
+
+  const weekDateAsText = useMemo(
+    () => format(new Date(), 'cccc', {
+      locale: ptBR,
+    }),
+    [],
+  );
 
   // Executar sempre que mudar o mês
   /*
@@ -77,13 +93,8 @@ const Dashboard: React.FC = () => {
           <h1>Horários agendados</h1>
           <p>
             <span>Hoje</span>
-            <span>
-              Dia
-              {new Date().getDate()}
-            </span>
-            <span>
-              {new Date().toUTCString().split(`, ${new Date().getDate()}`)}
-            </span>
+            <span>{todayDateAsText}</span>
+            <span>{weekDateAsText}</span>
           </p>
 
           <NextAppointment>
